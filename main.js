@@ -16,7 +16,7 @@ function addTask() {
         return
     }
     const li = document.createElement('li');
-    
+
     li.innerHTML = `<p data-id = ${++i} class="text">${text}</p>
     <div class="taskBtnWrapper">
     <button class="deleteBtn">Delete</button>
@@ -60,6 +60,8 @@ function openEditWindow(evt) {
         document.body.appendChild(backDrop);
         document.querySelector(".modalEditBtn").addEventListener('click', editTask)
         document.body.classList.add('open');
+        backDrop.addEventListener('click', onBackdropClick)
+        document.body.addEventListener('keydown', onEscPress)
     }
 
 }
@@ -67,6 +69,20 @@ function openEditWindow(evt) {
 function editTask() {
     document.querySelector(`[data-id = "${textId}"`).textContent = document.querySelector('.textarea').value
     document.querySelector('.backdrop').remove()
+}
+
+function onBackdropClick(evt) {
+
+    if (evt.target.classList.contains('backdrop')) {
+        document.querySelector('.backdrop').remove()
+    }
+}
+
+function onEscPress(evt) {
+    if (evt.code === "Escape") {
+        document.querySelector('.backdrop').remove()
+        document.body.removeEventListener('keydown', onEscPress)
+}
 }
 
 
@@ -87,7 +103,10 @@ function showWorningWindow(evt) {
         backDrop.appendChild(modal);
         document.body.appendChild(backDrop);
     document.body.classList.add('open');
-    document.querySelector('.okWarningBtn').addEventListener('click',closeWarningWindow)
+    document.querySelector('.okWarningBtn').addEventListener('click', closeWarningWindow)
+    
+         backDrop.addEventListener('click', onBackdropClick)
+        document.body.addEventListener('keydown', onEscPress)
 }
     
 function closeWarningWindow() {
