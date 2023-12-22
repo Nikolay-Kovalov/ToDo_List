@@ -121,6 +121,7 @@ p {
     justify-content: center;
     align-items: center;
     position: fixed;
+    z-index: 1;
     top: 0;
     left: 0;
     right: 0;
@@ -153,8 +154,8 @@ p {
 }
 
 .modalEditBtn {
-    width: 80px;
-    height: 48px;
+    width: 100px;
+    height: 64px;
     font-size: 20px;
     background-color: orange;
     color: white;
@@ -170,8 +171,8 @@ p {
 
 
 .open {
-    display: block;
     height: 100vh;
+    display: block;
     overflow: hidden;
 }
 

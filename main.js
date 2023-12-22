@@ -69,12 +69,14 @@ function openEditWindow(evt) {
 function editTask() {
     document.querySelector(`[data-id = "${textId}"`).textContent = document.querySelector('.textarea').value
     document.querySelector('.backdrop').remove()
+      document.body.classList.remove('open');
 }
 
 function onBackdropClick(evt) {
 
     if (evt.target.classList.contains('backdrop')) {
         document.querySelector('.backdrop').remove()
+              document.body.classList.remove('open');
     }
 }
 
@@ -82,6 +84,7 @@ function onEscPress(evt) {
     if (evt.code === "Escape") {
         document.querySelector('.backdrop').remove()
         document.body.removeEventListener('keydown', onEscPress)
+              document.body.classList.remove('open');
 }
 }
 
@@ -110,7 +113,8 @@ function showWorningWindow(evt) {
 }
     
 function closeWarningWindow() {
-        document.querySelector('.backdrop').remove()
+    document.querySelector('.backdrop').remove()
+          document.body.classList.remove('open');
 }
 
 
