@@ -19,8 +19,8 @@ function addTask() {
 
     li.innerHTML = `<p data-id = ${++i} class="text">${text}</p>
     <div class="taskBtnWrapper">
-    <button class="deleteBtn">Delete</button>
-    <button class="editBtn">Edit</button>
+    <button class="deleteBtn">Удалить</button>
+    <button class="editBtn">Редактировать</button>
     </div>`
 
     toDoList.appendChild(li)
@@ -46,7 +46,7 @@ function openEditWindow(evt) {
 
         const modal = document.createElement('div');
         modal.innerHTML = `
-    <button class="modalEditBtn">Edit</button>
+    <button class="modalEditBtn">Редактировать</button>
 `
         const textArea = document.createElement('textarea');
         textArea.cols = "30";
@@ -97,7 +97,7 @@ function showWorningWindow(evt) {
         const modal = document.createElement('div');
     modal.innerHTML = `
         <p class="warningText">
-  The input field shouldn't be empty!<br> Please, enter at least one character!
+  Поле ввода не должно быть пустым!<br> Пожалуйстаб введите как минимум один символ!
 </p>
 <button class="okWarningBtn">Ok</button>
 ` 
