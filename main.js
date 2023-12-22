@@ -16,9 +16,7 @@ function addTask() {
         return
     }
     const li = document.createElement('li');
-
-
-
+    
     li.innerHTML = `<p data-id = ${++i} class="text">${text}</p>
     <div class="taskBtnWrapper">
     <button class="deleteBtn">Delete</button>
