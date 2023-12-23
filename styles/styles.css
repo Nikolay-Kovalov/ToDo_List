@@ -86,8 +86,13 @@ p {
     font-size: 20px;
 }
 
+/* .taskBtnWrapper {
+    display: flex;
+    justify-content: space-between;
+} */
+
 .deleteBtn {
-    max-width: 140px;
+    width: 140px;
     height: 48px;
     font-size: 16px;
     background-color: red;
@@ -103,7 +108,7 @@ p {
 }
 
 .editBtn {
-    max-width: 140px;
+    width: 140px;
     height: 48px;
     font-size: 16px;
     background-color: orange;
@@ -482,7 +487,6 @@ p {
     }
 
     .taskBtnWrapper {
-        float: right;
         height: 32px;
         width: 260px;
     }
