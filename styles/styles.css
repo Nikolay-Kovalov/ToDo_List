@@ -14,7 +14,7 @@ p {
 }
 
 .block {
-    width: 360px;
+    max-width: 360px;
     margin: 0 auto;
     padding: 12px 24px;
 }
@@ -87,14 +87,14 @@ p {
 }
 
 .deleteBtn {
-    width: 140px;
+    max-width: 140px;
     height: 48px;
     font-size: 16px;
     background-color: red;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 4px 4px;
+    padding: 4px 16px;
 }
 
 .deleteBtn:active {
@@ -103,14 +103,14 @@ p {
 }
 
 .editBtn {
-    width: 140px;
+    max-width: 140px;
     height: 48px;
     font-size: 16px;
     background-color: orange;
     color: white;
     border: none;
     border-radius: 8px;
-    padding: 4px 4px;
+    padding: 4px 8px;
 }
 
 .editBtn:active {
@@ -209,10 +209,206 @@ p {
     gap: 4px;
 }
 
+@media screen and (min-width: 768px) {
+    .block {
+        max-width: 560px;
+        margin: 0 auto;
+        padding: 12px 24px;
+    }
+
+    .block h1 {
+        text-align: center;
+        font-size: 24px;
+    }
+
+    .block ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+
+    .block li {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        justify-content: space-between;
+        border: 1px solid black;
+        padding: 8px 12px;
+        border-radius: 8px;
+    }
+
+    .block li:hover {
+        box-shadow: 0px 0px 2px grey;
+    }
+
+    .block li:not(:last-child) {
+        margin-bottom: 12px;
+    }
+
+    .input-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
+    }
+
+    .input {
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        padding-left: 12px;
+        font-size: 20px;
+        border: 1px solid black;
+    }
+
+    .btn {
+        width: 100%;
+        height: 48px;
+        background-color: dodgerblue;
+        border: none;
+        border-radius: 8px;
+        font-size: 20px;
+        color: white;
+    }
+
+    .btn:active {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px dodgerblue;
+    }
+
+
+    .text {
+        max-width: 100%;
+        word-wrap: break-word;
+        font-size: 20px;
+    }
+
+    .deleteBtn {
+        max-width: 140px;
+        height: 48px;
+        font-size: 16px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 4px 16px;
+    }
+
+    .deleteBtn:active {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px red;
+    }
+
+    .editBtn {
+        max-width: 140px;
+        height: 48px;
+        font-size: 16px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 4px 8px;
+    }
+
+    .editBtn:active {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px orange;
+    }
+
+    .backdrop {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(15, 15, 15, 0.6);
+
+    }
+
+    .modal {
+        padding: 12px;
+        width: 340px;
+        height: 180px;
+        border-radius: 8px;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .editInput {
+        height: 70%;
+    }
+
+    .textarea {
+        width: 320px;
+        font-size: 24px;
+        padding: 8px;
+    }
+
+    .modalEditBtn {
+        display: inline-block;
+        width: 180px;
+        height: 64px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        font-size: 20px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 8px;
+
+    }
+
+    .modalEditBtn:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px orange;
+    }
+
+    .open {
+        position: static;
+        height: 100vh;
+        display: block;
+        overflow: hidden;
+    }
+
+    .okWarningBtn {
+        margin-top: 24px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        width: 140px;
+        height: 48px;
+        font-size: 20px;
+        background-color: green;
+        color: white;
+        border: none;
+        border-radius: 8px;
+    }
+
+    .okWarningBtn:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 4px green;
+    }
+
+    .warning {
+        padding: 12px 24px;
+        font-size: 18px;
+        text-align: center;
+        gap: 4px;
+    }
+}
 
 @media screen and (min-width: 1200px) {
     .block {
-        width: 700px;
+        max-width: 700px;
         margin: 0 auto;
         padding: 12px 24px;
     }
