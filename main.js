@@ -7,7 +7,39 @@ addTaskBtn.addEventListener('click', addTask);
 toDoList.addEventListener('click', deleteTask);
 toDoList.addEventListener('click', openEditWindow);
 
-let i = 0;
+let i = 1 ;
+
+function getFromLS(key) {
+    const savedData = localStorage.getItem(key);
+    return JSON.parse(savedData)
+}
+
+const tasks = getFromLS('myTasks') || [];
+console.log(tasks)
+    
+function renderSavedTasks() {
+    if (tasks.length) {
+       i = tasks[0].id
+   }
+
+    tasks.forEach(item => {
+    const li = document.createElement('li');
+
+    li.innerHTML = `<p data-id = ${i} class="text">${item.task}</p>
+    <div class="taskBtnWrapper">
+    <button class="deleteBtn">Удалить</button>
+    <button class="editBtn">Редактировать</button>
+    </div>`
+
+        toDoList.appendChild(li) 
+        i+=1
+    });
+}
+
+renderSavedTasks()
+
+let taskArr =  getFromLS('myTasks') || []; 
+console.log(taskArr)
 
 function addTask() {
     const text = toDoInput.value;
@@ -15,9 +47,10 @@ function addTask() {
        showWorningWindow()
         return
     }
+
     const li = document.createElement('li');
 
-    li.innerHTML = `<p data-id = ${++i} class="text">${text}</p>
+    li.innerHTML = `<p data-id = ${i} class="text">${text}</p>
     <div class="taskBtnWrapper">
     <button class="deleteBtn">Удалить</button>
     <button class="editBtn">Редактировать</button>
@@ -25,11 +58,29 @@ function addTask() {
 
     toDoList.appendChild(li)
     toDoInput.value = "";
+
+        const task = {
+        task: text,
+        id: i,
+    }
+    taskArr.push(task)
+        localStorage.setItem('myTasks',JSON.stringify(taskArr) )
+    console.log(task)
+    console.log(taskArr)
+    i+=1
 }
 
 function deleteTask(evt) {
     if (evt.target.classList.contains("deleteBtn")) {
+        taskArr = taskArr.filter(item => {
+    console.log(item.id)
+return item.id !== Number(evt.target.closest('li').firstElementChild.dataset.id)
+     })
+        console.log(evt.target.closest('li').firstElementChild.dataset.id)
+        console.log(taskArr)
         evt.target.closest('li').remove()
+        localStorage.setItem('myTasks',JSON.stringify(taskArr) )
+
     }
 }
 
@@ -69,7 +120,17 @@ function openEditWindow(evt) {
 function editTask() {
     document.querySelector(`[data-id = "${textId}"`).textContent = document.querySelector('.textarea').value
     document.querySelector('.backdrop').remove()
-      document.body.classList.remove('open');
+    document.body.classList.remove('open');
+    console.log(  document.querySelector(`[data-id = "${textId}"`))
+    taskArr.forEach(item => {
+        if (item.id === Number(document.querySelector(`[data-id = "${textId}"`).dataset.id)) {
+                       console.log(item.id);
+        console.log(Number(document.querySelector(`[data-id = "${textId}"`).dataset.id))
+            item.task =   document.querySelector(`[data-id = "${textId}"`).textContent
+            localStorage.setItem('myTasks',JSON.stringify(taskArr) )
+        }
+ 
+    })
 }
 
 function onBackdropClick(evt) {
@@ -97,7 +158,8 @@ function showWorningWindow(evt) {
         const modal = document.createElement('div');
     modal.innerHTML = `
         <p class="warningText">
-  Поле ввода не должно быть пустым!<br> Пожалуйстаб введите как минимум один символ!
+  Поле ввода не должно быть пустым!</p>
+   <p class="warningText">Пожалуйстаб введите как минимум один символ!
 </p>
 <button class="okWarningBtn">Ok</button>
 ` 

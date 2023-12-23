@@ -228,7 +228,9 @@ p {
 
 
     .block li {
-        display: flex;
+
+        /* display: flex;
+        flex-direction: row; */
         justify-content: space-between;
         border: 1px solid rgba(107, 107, 107, 0.38);
         padding: 8px 12px;
@@ -266,7 +268,7 @@ p {
         background-color: dodgerblue;
         border: none;
         border-radius: 8px;
-        font-size: 20px;
+        font-size: 16px;
         color: white;
     }
 
@@ -277,13 +279,20 @@ p {
 
 
     .text {
-        max-width: 480px;
+        float: right;
+        width: 100%;
         word-wrap: break-word;
         font-size: 24px;
     }
 
+    .taskBtnWrapper {
+        float: right;
+        height: 32px;
+        width: 260px;
+    }
+
     .deleteBtn {
-        width: 60px;
+        width: 120px;
         height: 32px;
         font-size: 14px;
         background-color: red;
@@ -299,7 +308,7 @@ p {
     }
 
     .editBtn {
-        width: 100px;
+        width: 120px;
         height: 32px;
         font-size: 14px;
         background-color: orange;
@@ -373,10 +382,11 @@ p {
         display: block;
         height: 100vh;
         overflow: hidden;
+        position: static;
     }
 
     .okWarningBtn {
-        margin-top: 24px;
+        margin-bottom: 12px;
         width: 140px;
         height: 48px;
         font-size: 20px;
@@ -391,9 +401,14 @@ p {
         box-shadow: 0px 0px 4px green;
     }
 
+    .warningText {
+        font-size: 24px;
+    }
+
     .warning {
         padding: 12px 24px;
-        font-size: 24px;
         text-align: center;
+        gap: 12px;
     }
+
 }
