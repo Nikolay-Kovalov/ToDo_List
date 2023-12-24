@@ -6,6 +6,8 @@ const toDoInput = document.getElementById('toDoInput');
 addTaskBtn.addEventListener('click', addTask);
 toDoList.addEventListener('click', deleteTask);
 toDoList.addEventListener('click', openEditWindow);
+toDoList.addEventListener('click', makeTaskDone);
+
 
 let i = 1 ;
 
@@ -25,14 +27,19 @@ function renderSavedTasks() {
     tasks.forEach(item => {
     const li = document.createElement('li');
 
-    li.innerHTML = `<p data-id = ${i} class="text">${item.task}</p>
+    li.innerHTML = `<p data-id = ${item.id} class="text">${item.task}</p>
     <div class="taskBtnWrapper">
     <button class="deleteBtn">Удалить</button>
     <button class="editBtn">Редактировать</button>
     </div>`
-
+    if (item.done) {
+        li.firstElementChild.classList.add('linethrough');
+        li.lastElementChild.lastElementChild.classList.add('disabled')
+        }
         toDoList.appendChild(li) 
-        i+=1
+
+        i += 1
+    
     });
 }
 
@@ -61,7 +68,8 @@ function addTask() {
 
         const task = {
         task: text,
-        id: i,
+            id: i,
+        done: false,
     }
     taskArr.push(task)
         localStorage.setItem('myTasks',JSON.stringify(taskArr) )
@@ -177,6 +185,19 @@ function showWorningWindow(evt) {
 function closeWarningWindow() {
     document.querySelector('.backdrop').remove()
           document.body.classList.remove('open');
+}
+
+
+function makeTaskDone(evt) {
+    if (evt.target.tagName === 'P') {
+        evt.target.classList.toggle('linethrough');
+        evt.target.nextElementSibling.lastElementChild.classList.toggle('disabled')
+      console.log(+evt.target.dataset.id )
+console.log(taskArr[taskArr.findIndex(item => item.task === evt.target.textContent)])
+        taskArr[taskArr.findIndex(item => item.task === evt.target.textContent)].done = taskArr[taskArr.findIndex(item => item.task === evt.target.textContent)].done ? false : true;
+        console.log(taskArr)
+                    localStorage.setItem('myTasks',JSON.stringify(taskArr) )
+    }
 }
 
 

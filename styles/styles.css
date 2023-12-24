@@ -42,6 +42,7 @@ p {
 
 .block li:hover {
     box-shadow: 0px 0px 2px grey;
+    cursor: pointer;
 }
 
 .block li:not(:last-child) {
@@ -86,6 +87,12 @@ p {
     font-size: 20px;
 }
 
+.linethrough {
+    text-decoration: line-through;
+    color: grey;
+}
+
+
 /* .taskBtnWrapper {
     display: flex;
     justify-content: space-between;
@@ -121,6 +128,12 @@ p {
 .editBtn:active {
     cursor: pointer;
     box-shadow: 0px 0px 4px orange;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+
 }
 
 .backdrop {
@@ -318,6 +331,12 @@ p {
     .editBtn:active {
         cursor: pointer;
         box-shadow: 0px 0px 4px orange;
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+
     }
 
     .backdrop {
@@ -521,6 +540,12 @@ p {
     .editBtn:hover {
         cursor: pointer;
         box-shadow: 0px 0px 4px orange;
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.5;
+
     }
 
     .backdrop {
